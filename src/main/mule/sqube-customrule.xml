@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="94be1b15-6fe8-48da-b9ec-d9e6e39c2a64" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="60f18e38-be13-405b-afbd-6941aa4f1217" basePath="/api" >
+		<http:request-connection host="training-american-ws.cloudhub.io" port="80" />
+	</http:request-config>
+	<flow name="sqube-customruleFlow" doc:id="ad631be1-c845-45de-979f-718625c76f0f" >
+		<http:listener doc:name="Listener" doc:id="2b99f86f-5d67-46eb-b73a-7e4973de1350" config-ref="HTTP_Listener_config" path="/getall"/>
+		<http:request method="GET" doc:name="Request" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="/flights">
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	"name" : "demo"
+}]]]></http:headers>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="bdd1110b-60a0-4129-af95-e8d9654e889c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="4152039b-f806-425e-be05-162143a7ce1e" message="#[payload]"/>
+	</flow>
+</mule>
