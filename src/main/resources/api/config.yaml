@@ -1,0 +1,10 @@
+http:
+  host: "localhost"
+  port: "8081"
+  path: "/getall"
+  
+req:
+  host: "training-american-ws.cloudhub.io"
+  port: "80"
+  bp: "/api"
+  Path: "/flights"
