@@ -28,6 +28,7 @@ payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="display flight data" doc:id="4152039b-f806-425e-be05-162143a7ce1e" message="#[payload]" category="monitoring"/>
+		<set-payload value="#[payload]" doc:name="save data into payload" doc:id="57db9ef2-6b2d-48c2-bdbb-9e580578bf58" />
 	</flow>
 	
 </mule>
