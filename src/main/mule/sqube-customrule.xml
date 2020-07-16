@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<configuration-properties doc:name="Configuration properties" doc:id="43604f15-d627-40a3-ad5e-ebd31e0842d6" file="api\config.yaml" />
 	<flow name="sqube-customruleFlow" doc:id="ad631be1-c845-45de-979f-718625c76f0f" >
 		<http:listener doc:name="Listener" doc:id="2b99f86f-5d67-46eb-b73a-7e4973de1350" config-ref="HTTP_Listener_config" path="/getall"/>
-		<http:request method="GET" doc:name="Request" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="${req.Path}">
+		<http:request method="GET" doc:name="abcd" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="${req.Path}">
 			
 		</http:request>
 		<ee:transform doc:name="Transform Message" doc:id="bdd1110b-60a0-4129-af95-e8d9654e889c" >
