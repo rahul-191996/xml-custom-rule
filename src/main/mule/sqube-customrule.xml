@@ -8,10 +8,10 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="94be1b15-6fe8-48da-b9ec-d9e6e39c2a64" >
-		<http:listener-connection host="${http.host}" port="80" />
+		<http:listener-connection host="${http.host}" port="${http.port}" />
 	</http:listener-config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="60f18e38-be13-405b-afbd-6941aa4f1217" basePath="${req.bp}" >
-		<http:request-connection host="${req.host}" port="${req.port}" />
+		<http:request-connection host="${req.host}" port="80" />
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="43604f15-d627-40a3-ad5e-ebd31e0842d6" file="api\config.yaml" />
 	<flow name="sqube-customruleFlow" doc:id="ad631be1-c845-45de-979f-718625c76f0f" >
