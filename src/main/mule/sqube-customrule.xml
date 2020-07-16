@@ -33,4 +33,9 @@ payload]]></ee:set-payload>
 		</ee:transform>
 		<logger level="INFO" doc:name="Logger" doc:id="4152039b-f806-425e-be05-162143a7ce1e" message="#[payload]" category="monitoring"/>
 	</flow>
+	<flow name="rule-flow" doc:id="031af0b4-a21e-411f-9b84-dd6ea7ffdc9d" >
+		<http:listener doc:name="Listener" doc:id="26d1ba6c-97d7-470e-a017-5c3299b3c3de" config-ref="HTTP_Listener_config" path="/new"/>
+		<set-payload doc:name="Set Payload" doc:id="f94513d3-11b6-4c1c-ad85-a0ac9831d8d0" />
+		<logger level="INFO" doc:name="Logger" doc:id="d4b02b2c-bb0c-4e65-ba41-3ea7f6b5b2f3" message="#[payload]"/>
+	</flow>
 </mule>
