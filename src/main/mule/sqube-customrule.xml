@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<configuration-properties doc:name="Configuration properties" doc:id="43604f15-d627-40a3-ad5e-ebd31e0842d6" file="api\config.yaml" />
 	<flow name="sqube-customruleFlow" doc:id="ad631be1-c845-45de-979f-718625c76f0f" >
 		<http:listener doc:name="Listener" doc:id="2b99f86f-5d67-46eb-b73a-7e4973de1350" config-ref="HTTP_Listener_config" path="/getall"/>
-		<http:request method="GET" doc:name="Request" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="${req.Path}">
+		<http:request method="GET" doc:name="get flights data" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="${req.Path}">
 			<http:headers ><![CDATA[#[output application/java
 ---
 {
@@ -31,11 +31,11 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="4152039b-f806-425e-be05-162143a7ce1e" message="#[payload]" category="monitoring"/>
+		<logger level="INFO" doc:name="flights data" doc:id="4152039b-f806-425e-be05-162143a7ce1e" message="#[payload]" category="monitoring"/>
 	</flow>
 	<flow name="rule-flow" doc:id="031af0b4-a21e-411f-9b84-dd6ea7ffdc9d" >
 		<http:listener doc:name="Listener" doc:id="26d1ba6c-97d7-470e-a017-5c3299b3c3de" config-ref="HTTP_Listener_config" path="/new"/>
 		<set-payload doc:name="Set Payload" doc:id="f94513d3-11b6-4c1c-ad85-a0ac9831d8d0" />
-		<logger level="INFO" doc:name="Logger" doc:id="d4b02b2c-bb0c-4e65-ba41-3ea7f6b5b2f3" message="#[payload]"/>
+		<logger level="INFO" doc:name="display payload data" doc:id="d4b02b2c-bb0c-4e65-ba41-3ea7f6b5b2f3" message="#[payload]"/>
 	</flow>
 </mule>
