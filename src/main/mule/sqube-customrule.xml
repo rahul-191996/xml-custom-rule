@@ -11,12 +11,12 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener-connection host="${http.host}" port="${http.port}" />
 	</http:listener-config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="60f18e38-be13-405b-afbd-6941aa4f1217" basePath="${req.bp}" >
-		<http:request-connection host="${req.host}" port="80" />
+		<http:request-connection host="${req.host}" port="${req.port}" />
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="43604f15-d627-40a3-ad5e-ebd31e0842d6" file="api\config.yaml" />
 	<flow name="sqube-customruleFlow" doc:id="ad631be1-c845-45de-979f-718625c76f0f" >
 		<http:listener doc:name="Listener" doc:id="2b99f86f-5d67-46eb-b73a-7e4973de1350" config-ref="HTTP_Listener_config" path="/getall"/>
-		<http:request method="POST" doc:name="Request" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="${req.Path}">
+		<http:request method="GET" doc:name="Request" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="${req.Path}">
 			<http:headers ><![CDATA[#[output application/java
 ---
 {
@@ -31,6 +31,6 @@ output application/json
 payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="Logger" doc:id="4152039b-f806-425e-be05-162143a7ce1e" message="#[payload]" category="performance"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4152039b-f806-425e-be05-162143a7ce1e" message="#[payload]" category="monitoring"/>
 	</flow>
 </mule>
