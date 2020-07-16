@@ -19,7 +19,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:request method="GET" doc:name="get flights data" doc:id="21b14d92-a31d-41f1-b239-cc9355423b43" config-ref="HTTP_Request_configuration" path="${req.Path}">
 			
 		</http:request>
-		<ee:transform doc:name="Transform Message" doc:id="bdd1110b-60a0-4129-af95-e8d9654e889c" >
+		<ee:transform doc:name="convert to json" doc:id="bdd1110b-60a0-4129-af95-e8d9654e889c" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
