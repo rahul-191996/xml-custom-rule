@@ -29,7 +29,7 @@ payload]]></ee:set-payload>
 		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="e11ace38-b02d-4003-92ee-f1c1d73b2564" />
 		
 	</flow>
-	<sub-flow name="sqube-customruleSub_Flow" doc:id="29d5fbf0-9274-495e-a6e9-11b6a8353e15" >
+	<sub-flow name="sqube-customruleSub_Flow" doc:id="29d5fbf0-9274-495e-a6e9-11b6a8353e15" doc:description="abcd">
 		<logger level="INFO" doc:name="Logger" doc:id="ca53f9d8-8a88-429b-9311-120664cdf687" message='#["HI"]'/>
 	</sub-flow>
 	
